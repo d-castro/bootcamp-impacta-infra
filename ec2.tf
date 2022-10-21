@@ -69,5 +69,5 @@ resource "aws_security_group" "web_sg" {
 }
 
 output "web-address" {
-  value = "${aws_instance.web.public_dns}:8080"
+  value = "${aws_instance.jumper.public_dns}:8080"
 }
