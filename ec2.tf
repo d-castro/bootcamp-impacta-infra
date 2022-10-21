@@ -25,7 +25,7 @@ resource "aws_instance" "jumper" {
               chmod +x ./kubectl
               mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
               aws sts get-caller-identity
-              aws eks --region sa-east-1 update-kubeconfig --name bootcamp-impacta
+              aws eks --region us-east-1 update-kubeconfig --name bootcamp-impacta
               EOF
 
   root_block_device {
