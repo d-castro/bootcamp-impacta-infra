@@ -45,7 +45,7 @@ resource "aws_instance" "jumper" {
     ignore_changes = [ebs_block_device]
   }
   tags = {
-    Name = "EC2_${var.environment}"
+    Name = "EC2_jumper"
   }
 }
 
