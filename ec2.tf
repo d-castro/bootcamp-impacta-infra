@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jumper" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.web_sg.id]  
+  vpc_security_group_ids = [aws_security_group.web_sg.id]
   user_data              = <<-EOF
               #!/bin/bash
               sudo su -
@@ -35,17 +35,17 @@ resource "aws_instance" "jumper" {
     encrypted             = true
   }
   ebs_block_device {
-    device_name = "/dev/sdb"
-    volume_size = 8
-    volume_type = "gp3"
+    device_name           = "/dev/sdb"
+    volume_size           = 8
+    volume_type           = "gp3"
     delete_on_termination = true
-    encrypted = true
+    encrypted             = true
   }
   lifecycle {
     ignore_changes = [ebs_block_device]
   }
   tags = {
-    Name = "EC2_${var.environment}"    
+    Name = "EC2_${var.environment}"
   }
 }
 
@@ -65,7 +65,7 @@ resource "aws_security_group" "web_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-  }  
+  }
 }
 
 output "web-address" {
